@@ -9,7 +9,9 @@
     "prebuild": "rimraf .aws-sam .vscode",
     "prewatch": "rimraf .aws-sam .vscode",
     "watch": "webpack-cli -w",
-    "test": "jest"
+    "test": "jest",
+    "deploy:dev": "sam deploy --config-file ./samconfig.toml --parameter-overrides Stage=dev",
+    "deploy:prod": "sam deploy --config-file ./samconfig.toml --parameter-overrides Stage=prod"
   },
   "keywords": [
     "SAM",

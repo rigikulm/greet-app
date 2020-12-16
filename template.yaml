@@ -5,6 +5,16 @@ Description: >
 
   Sample SAM Template for greet-app
   
+Parameters:
+  ServiceName:
+    Type: String
+    Default: greetings-api
+  Stage:
+    Description: The deployment stage dev or prod
+    Type: String
+    Default: dev
+
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
@@ -14,9 +24,15 @@ Resources:
   HelloFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
+      FunctionName: !Sub "${ServiceName}-${Stage}-get-hello"
+      Description: 'Returns the greeting hello'
       CodeUri: src/hello
       Handler: handler.default
       Runtime: nodejs12.x
+      Tags:
+        'greenhorn:project': 'MyProject'
+        'greenhorn:service-name': !Sub "${ServiceName}"
+        'greenhorn:owner': 'Fred Flinstone'
       Events:
         Hello:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
@@ -26,9 +42,15 @@ Resources:
   GoodbyeFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
+      FunctionName: !Sub "${ServiceName}-${Stage}-get-goodbye"
+      Description: 'Returns the greeting goodbye'
       CodeUri: src/goodbye
       Handler: handler.default
       Runtime: nodejs12.x
+      Tags:
+        'greenhorn:project': 'MyProject'
+        'greenhorn:service-name': !Sub "${ServiceName}"
+        'greenhorn:owner': 'Fred Flinstone'
       Events:
         Goodbye:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
