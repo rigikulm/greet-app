@@ -55,3 +55,6 @@ STAGE
 - `npm run test` - runs jest and provides a coverage report
 - `sam deploy --guided` - deploys the project and queries for project settings
 - `sam deploy --config-env 'dev' --config-file ./samconfig.toml` - deploys using the config file
+
+## Todo
+- AWS SAM [Policy Templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) to control access to resources 

@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import { APIGatewayProxyResult, APIGatewayProxyEvent } from 'aws-lambda';
-import response from '../lib/response';
+import response from '../../lib/response';
 
 // export default async handler = async (): Promise<APIGatewayProxyResult> => {
 //   return { body: JSON.stringify({ message: 'hello' }), statusCode: 200 };

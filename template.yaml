@@ -26,7 +26,7 @@ Resources:
     Properties:
       FunctionName: !Sub "${ServiceName}-${Stage}-get-hello"
       Description: 'Returns the greeting hello'
-      CodeUri: src/hello
+      CodeUri: src/functions/hello
       Handler: handler.default
       Runtime: nodejs12.x
       Tags:
@@ -44,7 +44,7 @@ Resources:
     Properties:
       FunctionName: !Sub "${ServiceName}-${Stage}-get-goodbye"
       Description: 'Returns the greeting goodbye'
-      CodeUri: src/goodbye
+      CodeUri: src/functions/goodbye
       Handler: handler.default
       Runtime: nodejs12.x
       Tags:
