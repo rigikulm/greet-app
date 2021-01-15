@@ -10,6 +10,10 @@
     "prewatch": "rimraf .aws-sam .vscode",
     "watch": "webpack-cli -w",
     "test": "jest",
+    "startdb": "docker run -p 8000:8000 amazon/dynamodb-local",
+    "createdb": "/bin/sh ./test/util/create-table.sh",
+    "stagedb": "/bin/sh ./test/util/stage-db.sh",
+    "dumpdb": "/bin/sh ./test/util/dump-db.sh",
     "deploy:dev": "sam deploy --config-file ./samconfig.toml --parameter-overrides Stage=dev",
     "deploy:prod": "sam deploy --config-file ./samconfig.toml --parameter-overrides Stage=prod"
   },
