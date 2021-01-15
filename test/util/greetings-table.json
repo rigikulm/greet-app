@@ -1,0 +1,27 @@
+{
+  "TableName": "greetings-db",
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "id",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "lang",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "KeyType": "HASH",
+      "AttributeName": "id"
+    },
+    {
+      "KeyType": "RANGE",
+      "AttributeName": "lang"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "WriteCapacityUnits": 1,
+    "ReadCapacityUnits": 1
+  }
+}

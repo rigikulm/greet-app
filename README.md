@@ -55,6 +55,12 @@ STAGE
 - `npm run test` - runs jest and provides a coverage report
 - `sam deploy --guided` - deploys the project and queries for project settings
 - `sam deploy --config-env 'dev' --config-file ./samconfig.toml` - deploys using the config file
+- `aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://greetings-table.json`
+- `aws dynamodb batch-write-item --endpoint-url http://localhost:8000 --request-items file://greetings-items.json`
+- `aws dynamodb scan --endpoint-url http://localhost:8000 --table-name "greetings-db"`
 
 ## Todo
-- AWS SAM [Policy Templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) to control access to resources 
+- AWS SAM [Policy Templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) to control access to resources
+- Mock tutorial for Dynamo
+- Write DB code in the lambdas
+- 

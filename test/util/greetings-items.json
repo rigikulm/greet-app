@@ -1,0 +1,22 @@
+{
+  "greetings-db": [
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S": "hello"},
+          "lang": {"S": "en"},
+          "greeting": {"S": "Hello"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S": "hello"},
+          "lang": {"S": "de"},
+          "greeting": {"S": "Hallo"}
+        }
+      }
+    }
+  ]
+}
