@@ -55,9 +55,18 @@ STAGE
 - `npm run test` - runs jest and provides a coverage report
 - `sam deploy --guided` - deploys the project and queries for project settings
 - `sam deploy --config-env 'dev' --config-file ./samconfig.toml` - deploys using the config file
+- `npm run startdb` - starts the local dynamodb instance using docker on port 8000
+- `npm run createdb` - creates the table in the locally running dynamodb instance
+- `npm run stagedb` - adds sample records to the local dynamodb instance
+- `npm run dumpdb` - lists all of the records in the local dynamodb instance
 - `aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://greetings-table.json`
 - `aws dynamodb batch-write-item --endpoint-url http://localhost:8000 --request-items file://greetings-items.json`
 - `aws dynamodb scan --endpoint-url http://localhost:8000 --table-name "greetings-db"`
+- `sam local invoke HelloFunction --docker-network sam-local` - invokes a single function once
+
+> Notes:
+> - startdb requires docker and the amazon/dynamodb-local image
+> - createdb, stagedb, and dumpdb require the AWS CLI
 
 ## Todo
 - AWS SAM [Policy Templates](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-policy-templates.html) to control access to resources
