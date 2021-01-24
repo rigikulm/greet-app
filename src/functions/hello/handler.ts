@@ -6,6 +6,13 @@ import response from '../../lib/response';
 
 export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('Entered /hello lambda function');
+  console.log(event);
+
+  // Default language binding
+  let lang = 'en';
+  if (event.pathParameters && event.pathParameters.hasOwnProperty('lang')) {
+    lang = event.pathParameters.lang;
+  }
 
   // Change the connection to DynamoDB if we are running locally
   AWS.config.update({
@@ -33,7 +40,7 @@ export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResul
     TableName: table,
     Key:{
         "id": "hello",
-        "lang": "de"
+        "lang": lang
     }
   };
 

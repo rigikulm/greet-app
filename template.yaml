@@ -29,6 +29,8 @@ Resources:
       CodeUri: src/functions/hello
       Handler: handler.default
       Runtime: nodejs12.x
+      ReservedConcurrentExecutions: 5
+      Timeout: 3
       Tags:
         'greenhorn:project': 'MyProject'
         'greenhorn:service-name': !Sub "${ServiceName}"
@@ -39,6 +41,11 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+        HelloQuery:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /hello/{lang}
+            Method: get
   GoodbyeFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -47,6 +54,8 @@ Resources:
       CodeUri: src/functions/goodbye
       Handler: handler.default
       Runtime: nodejs12.x
+      ReservedConcurrentExecutions: 5
+      Timeout: 3
       Tags:
         'greenhorn:project': 'MyProject'
         'greenhorn:service-name': !Sub "${ServiceName}"
@@ -55,7 +64,7 @@ Resources:
         Goodbye:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /goodbye
+            Path: /goodbye/{lang}
             Method: get
 
 Outputs:

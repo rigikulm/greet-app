@@ -5,6 +5,12 @@ import response from '../../lib/response';
 
 export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('Entered /goodbye lambda function');
+  
+  // Default language binding
+  let lang = 'en';
+  if (event.pathParameters && event.pathParameters.hasOwnProperty('lang')) {
+    lang = event.pathParameters.lang;
+  }
 
   // Change the connection to DynamoDB if we are running locally
   AWS.config.update({
@@ -24,7 +30,7 @@ export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResul
     TableName: table,
     Key:{
         "id": "goodbye",
-        "lang": "de"
+        "lang": lang
     }
   };
 
@@ -32,10 +38,6 @@ export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResul
   let results: any = {};
   try {
     results = await dynamodb.get(params).promise();
-    if ( !results.hasOwnProperty('Info')) {
-      console.log(`${params.Key} not found`);
-      return Promise.resolve(response.error(400, {}));
-    }
     console.log(results);
   } catch (err) {
     console.log('Uh oh entered the CATCH block');
