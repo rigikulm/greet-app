@@ -15,15 +15,20 @@ export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResul
   }
 
   // Change the connection to DynamoDB if we are running locally
-  AWS.config.update({
+  let config: any = {
     region: 'us-west-2',
     logger: console,
-    endpoint: 'http://dynamodb:8000',
     httpOptions: {
       connectTimeout: 200
     },
     maxRetries: 3
-  }, true);
+  };
+
+  if (process.env.hasOwnProperty('AWS_SAM_LOCAL') && process.env['AWS_SAM_LOCAL']) {
+    config['endpoint'] = 'http://dynamodb:8000';
+  }
+
+  AWS.config.update(config, true);
 
   console.log('Creating the DocumentClient');
   // let dynamodb = new AWS.DynamoDB.DocumentClient({

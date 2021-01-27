@@ -66,6 +66,27 @@ Resources:
           Properties:
             Path: /goodbye/{lang}
             Method: get
+  GreetingsDynamoDBTable: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - 
+          AttributeName: "id"
+          AttributeType: "S"
+        - 
+          AttributeName: "lang"
+          AttributeType: "S"
+      KeySchema: 
+        - 
+          AttributeName: "id"
+          KeyType: "HASH"
+        - 
+          AttributeName: "lang"
+          KeyType: "RANGE"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "1"
+        WriteCapacityUnits: "1"
+      TableName: !Sub "greetings-db-${Stage}"
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
