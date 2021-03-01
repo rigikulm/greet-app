@@ -52,6 +52,7 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
+    "@greenhorn/faas-logger": "file:../faas-logger/dist",
     "aws-sdk": "^2.828.0"
   }
 }

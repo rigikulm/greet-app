@@ -63,6 +63,17 @@ STAGE
 - `aws dynamodb batch-write-item --endpoint-url http://localhost:8000 --request-items file://greetings-items.json`
 - `aws dynamodb scan --endpoint-url http://localhost:8000 --table-name "greetings-db"`
 - `sam local invoke HelloFunction --docker-network sam-local` - invokes a single function once
+- `sam local invoke --no-event --docker-network sam-local HelloFunction`
+    - Explicitly callout no event to be passed
+-
+
+### Error: dynamodb already in use by container
+Sometimes after you have started DynamoDB with the `--name` option, you will see this type of error when trying to run `npm run startdb`. There are a few of options when this occurs:
+
+- List the containers on your system to validate it already exists
+	- `docker ps -a` the name is shown in the last column
+	- `docker restart <name>` to restart the container. You will need to run `createdb` and `stagedb` after that.
+	- `docker rm <name>` to get rid of it
 
 > Notes:
 > - startdb requires docker and the amazon/dynamodb-local image
