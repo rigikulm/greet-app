@@ -3,7 +3,7 @@
 #
 # This is required for staging a local instance of DynamoDB which currently
 # cannot be done via SAM.
-echo "Staging records into the greetings-db..."
+echo "Listing records from greetings-db-dev..."
 
-aws dynamodb scan --endpoint-url http://localhost:8000 --table-name greetings-db
+aws dynamodb scan --endpoint-url http://localhost:8080 --table-name greetings-db-dev
 exit 0

@@ -1,0 +1,55 @@
+{
+    "SeverityText": "INFO",
+    "SeverityNumber": 9,
+    "Timestamp": 1614574288074,
+    "Attributes": {
+        "http.method": "GET",
+        "http.url": "/hello/de",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15",
+        "client.ip": "73.93.15.62, 130.176.157.150"
+    },
+    "Resource": {
+        "faas.region": "us-west-2",
+        "faas.name": "greetings-api-dev-get-hello",
+        "faas.version": "$LATEST"
+    },
+    "Body": "Event: {\n  resource: '/hello/{lang}',\n  path: '/hello/de',\n  httpMethod: 'GET',\n  headers: {\n    Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',\n    'Accept-Encoding': 'gzip, deflate, br',\n    'Accept-Language': 'en-us',\n    'CloudFront-Forwarded-Proto': 'https',\n    'CloudFront-Is-Desktop-Viewer': 'true',\n    'CloudFront-Is-Mobile-Viewer': 'false',\n    'CloudFront-Is-SmartTV-Viewer': 'false',\n    'CloudFront-Is-Tablet-Viewer': 'false',\n    'CloudFront-Viewer-Country': 'US',\n    Host: '6e04sklhx4.execute-api.us-west-2.amazonaws.com',\n    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15',\n    Via: '2.0 8eabaca8b591c36a72bf060174c30de1.cloudfront.net (CloudFront)',\n    'X-Amz-Cf-Id': 'n7yPFMf07_O1bMoJAYDO9O7FnziXyLJC16rWHideTBy6Ol58uzBNAg==',\n    'X-Amzn-Trace-Id': 'Root=1-603c72d0-15a4681554a3a2da1a546380',\n    'X-Forwarded-For': '73.93.15.62, 130.176.157.150',\n    'X-Forwarded-Port': '443',\n    'X-Forwarded-Proto': 'https'\n  },\n  multiValueHeaders: {\n    Accept: [\n      'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'\n    ],\n    'Accept-Encoding': [ 'gzip, deflate, br' ],\n    'Accept-Language': [ 'en-us' ],\n    'CloudFront-Forwarded-Proto': [ 'https' ],\n    'CloudFront-Is-Desktop-Viewer': [ 'true' ],\n    'CloudFront-Is-Mobile-Viewer': [ 'false' ],\n    'CloudFront-Is-SmartTV-Viewer': [ 'false' ],\n    'CloudFront-Is-Tablet-Viewer': [ 'false' ],\n    'CloudFront-Viewer-Country': [ 'US' ],\n    Host: [ '6e04sklhx4.execute-api.us-west-2.amazonaws.com' ],\n    'User-Agent': [\n      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15'\n    ],\n    Via: [\n      '2.0 8eabaca8b591c36a72bf060174c30de1.cloudfront.net (CloudFront)'\n    ],\n    'X-Amz-Cf-Id': [ 'n7yPFMf07_O1bMoJAYDO9O7FnziXyLJC16rWHideTBy6Ol58uzBNAg==' ],\n    'X-Amzn-Trace-Id': [ 'Root=1-603c72d0-15a4681554a3a2da1a546380' ],\n    'X-Forwarded-For': [ '73.93.15.62, 130.176.157.150' ],\n    'X-Forwarded-Port': [ '443' ],\n    'X-Forwarded-Proto': [ 'https' ]\n  },\n  queryStringParameters: null,\n  multiValueQueryStringParameters: null,\n  pathParameters: { lang: 'de' },\n  stageVariables: null,\n  requestContext: {\n    resourceId: '6yz4qs',\n    resourcePath: '/hello/{lang}',\n    httpMethod: 'GET',\n    extendedRequestId: 'bfbghGxovHcFbtA=',\n    requestTime: '01/Mar/2021:04:51:28 +0000',\n    path: '/Prod/hello/de',\n    accountId: '695736645327',\n    protocol: 'HTTP/1.1',\n    stage: 'Prod',\n    domainPrefix: '6e04sklhx4',\n    requestTimeEpoch: 1614574288057,\n    requestId: '2deb26df-715d-4927-92b3-cfc460e2ae3a',\n    identity: {\n      cognitoIdentityPoolId: null,\n      accountId: null,\n      cognitoIdentityId: null,\n      caller: null,\n      sourceIp: '73.93.15.62',\n      principalOrgId: null,\n      accessKey: null,\n      cognitoAuthenticationType: null,\n      cognitoAuthenticationProvider: null,\n      userArn: null,\n      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15',\n      user: null\n    },\n    domainName: '6e04sklhx4.execute-api.us-west-2.amazonaws.com',\n    apiId: '6e04sklhx4'\n  },\n  body: null,\n  isBase64Encoded: false\n}"
+}
+
+
+API Gateway Test Session
+
+{
+    "resource": "/hello/{lang}",
+    "path": "/hello/ch",
+    "httpMethod": "GET",
+    "headers": null,
+    "multiValueHeaders": null,
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": {
+        "lang": "ch"
+    },
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "6yz4qs",
+        "resourcePath": "/hello/{lang}",
+        "httpMethod": "GET",
+        "extendedRequestId": "bmLKzHodvHcFXPA=",
+        "requestTime": "03/Mar/2021:05:58:16 +0000",
+        "path": "/hello/{lang}",
+        "accountId": "695736645327",
+        "protocol": "HTTP/1.1",
+        "stage": "test-invoke-stage",
+        "domainPrefix": "testPrefix",
+        "requestTimeEpoch": 1614751096224,
+        "requestId": "00ab0241-cafd-4680-85bf-b1d25bd0b092",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "cognitoIdentityId": null,
+            "apiKey": "test-invoke-api-key",
+            "principalOrgId": null,
+            "cognitoAuthenticationType": null,
+            "userArn": "arn:aws:iam::695736645327:root",
+            "apiKeyId": "test-invoke-api-key-id",
+            "userAgent": "aws-internal/3 aws-sdk-java/1.11.946 Linux/4.9.230-0.1.ac.223.84.332.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.282-b08 java/ [TRUNCATED]

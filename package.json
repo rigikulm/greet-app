@@ -11,13 +11,13 @@
     "watch": "webpack-cli -w",
     "test": "jest",
     "startnet": "docker network create sam-local",
-    "startdb": "docker run --network sam-local --name dynamodb -p 8000:8000 amazon/dynamodb-local",
+    "startdb": "docker run -d -v $PWD:/dynamodb_local_db --network sam-local --name dynamodb -p 8080:8000 amazon/dynamodb-local",
     "createdb": "/bin/sh ./test/util/create-table.sh",
     "stagedb": "/bin/sh ./test/util/stage-db.sh",
     "dumpdb": "/bin/sh ./test/util/dump-db.sh",
     "startapi": "sam local start-api --docker-network sam-local",
-    "deploy:dev": "sam deploy --config-file ./samconfig.toml --parameter-overrides Stage=dev",
-    "deploy:prod": "sam deploy --config-file ./samconfig.toml --parameter-overrides Stage=prod"
+    "deploy:dev": "sam deploy --debug --config-file ./samconfig.toml --parameter-overrides StageName=dev",
+    "deploy:prod": "sam deploy --config-file ./samconfig.toml --parameter-overrides StageName=prod"
   },
   "keywords": [
     "SAM",
@@ -36,7 +36,7 @@
     "@types/webpack": "^4.41.25",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",
-    "aws-sam-webpack-plugin": "^0.7.0",
+    "aws-sam-webpack-plugin": "^0.8.1",
     "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-import-resolver-typescript": "^2.3.0",

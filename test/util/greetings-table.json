@@ -1,5 +1,5 @@
 {
-  "TableName": "greetings-db",
+  "TableName": "greetings-db-dev",
   "AttributeDefinitions": [
     {
       "AttributeName": "id",

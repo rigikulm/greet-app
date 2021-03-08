@@ -7,14 +7,18 @@
       "request": "attach",
       "address": "localhost",
       "port": 5858,
-      "localRoot": "${workspaceRoot}/.aws-sam/build/HelloFunction",
+      "localRoot": "${workspaceFolder}/.aws-sam/build/HelloFunction",
       "remoteRoot": "/var/task",
       "protocol": "inspector",
       "stopOnEntry": false,
       "outFiles": [
-        "${workspaceRoot}/.aws-sam/build/HelloFunction/app.js"
+        "${workspaceFolder}/.aws-sam/build/HelloFunction/**/*.js"
       ],
-      "sourceMaps": true
+      "sourceMaps": true,
+      "skipFiles": [
+        "/var/runtime/**/*.js",
+        "<node_internals>/**/*.js"
+      ]
     },
     {
       "name": "GoodbyeFunction",
@@ -22,14 +26,18 @@
       "request": "attach",
       "address": "localhost",
       "port": 5858,
-      "localRoot": "${workspaceRoot}/.aws-sam/build/GoodbyeFunction",
+      "localRoot": "${workspaceFolder}/.aws-sam/build/GoodbyeFunction",
       "remoteRoot": "/var/task",
       "protocol": "inspector",
       "stopOnEntry": false,
       "outFiles": [
-        "${workspaceRoot}/.aws-sam/build/GoodbyeFunction/app.js"
+        "${workspaceFolder}/.aws-sam/build/GoodbyeFunction/**/*.js"
       ],
-      "sourceMaps": true
+      "sourceMaps": true,
+      "skipFiles": [
+        "/var/runtime/**/*.js",
+        "<node_internals>/**/*.js"
+      ]
     }
   ]
 }

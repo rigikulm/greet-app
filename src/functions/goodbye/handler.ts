@@ -9,7 +9,7 @@ export default async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResul
   // Default language binding
   let lang = 'en';
   if (event.pathParameters && event.pathParameters.hasOwnProperty('lang')) {
-    lang = event.pathParameters.lang;
+    lang = <string>event.pathParameters.lang;
   }
 
   // Change the connection to DynamoDB if we are running locally

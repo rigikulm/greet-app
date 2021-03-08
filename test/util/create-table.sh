@@ -7,5 +7,5 @@ echo "Creating the greetings-db..."
 
 # Move to the directory where this script is located which contains the JSON files
 cd `dirname $0`
-aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://greetings-table.json
+aws dynamodb create-table --endpoint-url http://localhost:8080 --cli-input-json file://greetings-table.json
 exit 0

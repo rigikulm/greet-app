@@ -1,11 +1,11 @@
 {
-  "greetings-db": [
+  "greetings-db-dev": [
     {
       "PutRequest": {
         "Item": {
           "id": {"S": "hello"},
           "lang": {"S": "en"},
-          "greeting": {"S": "Hello"}
+          "phrase": {"S": "Hello"}
         }
       }
     },
@@ -14,7 +14,7 @@
         "Item": {
           "id": {"S": "hello"},
           "lang": {"S": "de"},
-          "greeting": {"S": "Hallo"}
+          "phrase": {"S": "Hallo"}
         }
       }
     },
@@ -23,7 +23,7 @@
         "Item": {
           "id": {"S": "hello"},
           "lang": {"S": "ch"},
-          "greeting": {"S": "Gruezi"}
+          "phrase": {"S": "Gruezi"}
         }
       }
     },
@@ -32,7 +32,7 @@
         "Item": {
           "id": {"S": "goodbye"},
           "lang": {"S": "de"},
-          "greeting": {"S": "Aufwiedersehen"}
+          "phrase": {"S": "Aufwiedersehen"}
         }
       }
     },
@@ -41,7 +41,7 @@
         "Item": {
           "id": {"S": "goodbye"},
           "lang": {"S": "en"},
-          "greeting": {"S": "Good-bye"}
+          "phrase": {"S": "Good-bye"}
         }
       }
     },
@@ -50,7 +50,34 @@
         "Item": {
           "id": {"S": "goodbye"},
           "lang": {"S": "ch"},
-          "greeting": {"S": "Tschuess"}
+          "phrase": {"S": "Tschuess"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S": "good-morning"},
+          "lang": {"S": "de"},
+          "phrase": {"S": "Guten Morgen"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S": "good-morning"},
+          "lang": {"S": "en"},
+          "phrase": {"S": "Good Morning"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {"S": "good-morning"},
+          "lang": {"S": "ch"},
+          "phrase": {"S": "Morgen"}
         }
       }
     }
