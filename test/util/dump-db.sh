@@ -5,5 +5,5 @@
 # cannot be done via SAM.
 echo "Listing records from greetings-db-dev..."
 
-aws dynamodb scan --endpoint-url http://localhost:8080 --table-name greetings-db-dev
+aws dynamodb scan --endpoint-url http://localhost:8000 --table-name greetings-db-dev
 exit 0

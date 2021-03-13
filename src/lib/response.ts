@@ -1,7 +1,7 @@
-import { APIGatewayProxyResult } from 'aws-lambda';
+//import { APIGatewayProxyResult } from 'aws-lambda';
 
 const response = {
-  success: (statusCode: number = 200, headers: any = {}, data: any ={}): APIGatewayProxyResult => {
+  success: (statusCode: number = 200, headers: any = {}, data: any ={}) => {
     // Default response code with no data
     const response: {
       statusCode: number;
@@ -23,7 +23,7 @@ const response = {
 
     return response;
   },
-  error: (statusCode: number = 500, headers: any = {}, err?: Error): APIGatewayProxyResult => {
+  error: (statusCode: number = 500, headers: any = {}, err?: Error) => {
     // Log that there was an error
     // @Todo replace with the real logger
     console.log(err);
