@@ -44,6 +44,7 @@ export default async (event: any, context: any) => {
     return Promise.resolve(response.error(500, {}));
   }
 
+  // GetItem query parameters
   const params: any = {
     TableName: tableName,
     Key: {
@@ -52,22 +53,21 @@ export default async (event: any, context: any) => {
     }
   };
 
-  log.info(`Calling dynamodb.get() with ${util.inspect(params)}`);
   let results;
   try {
+    log.info(`Calling dynamodb.get() with ${util.inspect(params)}`);
     results = await ddb.send(new GetItemCommand(params));
-    log.info(`results--> ${util.inspect(results)}`);
+    if (results.Item) {
+      log.info(httpStatus(200), `Success: lang: ${lang}, message: ${results.Item!.phrase}`);
+      return Promise.resolve(response.success(200, {}, { message: results.Item!.phrase }));
+    } else {
+      log.warn(httpStatus(400), `Warning: lang: ${lang}, phrase: goodbye not found`);
+      return Promise.resolve(response.error(400, {}, new Error(`Unable to find the requested phrase`)));
+    }
   } catch (err) {
     log.error(errorStatus('DBERROR', util.inspect(err)), 'Unable to retrieve phrases');
     return Promise.resolve(response.error(500, {}));
   }
 
   //await new Promise(r => setTimeout(r, 5000));
-  if (results.Item) {
-    log.info(httpStatus(200), `Success: lang: ${lang}, message: ${results.Item!.phrase}`);
-    return Promise.resolve(response.success(200, {}, {message: results.Item!.phrase}));
-  } else {
-    log.warn(httpStatus(400), `Warning: lang: ${lang}, phrase: goodbye not found`);
-    return Promise.resolve(response.success(400, {}, {message: 'Phrase not found'}));
-  }
 };
