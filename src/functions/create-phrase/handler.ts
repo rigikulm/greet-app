@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, PutItemCommand, PutItemCommandInput} from '@aws-sdk/client-dynamodb';
 import { FaasLogger, httpStatus, errorStatus } from '@greenhorn/faas-logger';
 import response from '../../lib/response';
 import util from 'util';
@@ -17,12 +17,7 @@ const ddbConfig: any = {
 export default async (event: any, context: any) => {
   const log = new FaasLogger(event);
   log.info('Entered /phrase lambda function');
-
-  // Default language binding
-  let lang = 'en';
-  if (event.pathParameters && event.pathParameters.hasOwnProperty('lang')) {
-    lang = <string>event.pathParameters.lang;
-  }
+  log.info(`Event--> ${util.inspect(event)}`);
 
   // Create the DynamoDBClient if it does not already exist.
   // If running locally dynamodb listening on local port 8000
@@ -43,24 +38,25 @@ export default async (event: any, context: any) => {
     return Promise.resolve(response.error(500, {}));
   }
 
-  // GetItem query parameters
-  const params: any = {
+  // PutItem parameters
+  const params: PutItemCommandInput = {
     TableName: tableName,
-    Key: {
-      id: { S: "hello" },
-      lang: { S: lang }
+    Item: {
+      id: { S: "good-night" },
+      lang: { S: "en" },
+      phrase: {S: "Good Night"}
     }
   };
 
   let results;
   try {
-    log.info(`Calling dynamodb.get() with ${util.inspect(params)}`);
+    log.info(`Calling ddb.send(PutItemCommand()) with ${util.inspect(params)}`);
     results = await ddb.send(new PutItemCommand(params));
-    if (results.Item) {
-      log.info(httpStatus(200), `Success: lang: ${lang}, message: ${results.Item!.phrase}`);
-      return Promise.resolve(response.success(200, {}, { message: results.Item!.phrase }));
+    if (results) {
+      log.info(httpStatus(200), `Success: message: ${results}`);
+      return Promise.resolve(response.success(200, {}, { message: results }));
     } else {
-      log.warn(httpStatus(400), `Warning: lang: ${lang}, phrase: goodbye not found`);
+      log.warn(httpStatus(400), `Warning: phrase: goodbye not found`);
       return Promise.resolve(response.error(400, {}, new Error(`Unable to find the requested phrase`)));
     }
   } catch (err) {

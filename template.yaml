@@ -85,6 +85,21 @@ Resources:
           Properties:
             Path: /goodbye/{lang}
             Method: get
+  CreatePhraseFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: !Sub "${ServiceName}-${StageName}-create-phrase"
+      Description: 'Creates a new phrase for a given language binding'
+      CodeUri: src/functions/create-phrase
+      Handler: handler.default
+      Policies:
+        - AmazonDynamoDBFullAccess
+      Events:
+        Create:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /phrase
+            Method: post
   GreetingsDynamoDBTable: 
     Type: AWS::DynamoDB::Table
     Properties: 
@@ -117,5 +132,8 @@ Outputs:
   GoodbyeApi:
     Description: "API Gateway endpoint URL for Prod stage for Goodbye function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/goodbye/"
+  PhraseApi:
+    Description: "API Gateway endpoint URL for Prod stage for Phrase function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/phrase/"
 
   
