@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import { DynamoDBClient, PutItemCommand, PutItemCommandInput} from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, PutItemCommand, PutItemCommandInput, PutItemCommandOutput} from '@aws-sdk/client-dynamodb';
 import { FaasLogger, httpStatus, errorStatus } from '@greenhorn/faas-logger';
 import response from '../../lib/response';
 import util from 'util';
@@ -18,6 +18,14 @@ export default async (event: any, context: any) => {
   const log = new FaasLogger(event);
   log.info('Entered /phrase lambda function');
   log.info(`Event--> ${util.inspect(event)}`);
+
+  // @todo Improve validation logic and code
+  // Hack validation code
+  if (!event.hasOwnProperty('id') || !event.hasOwnProperty('lang') || !event.hasOwnProperty('phrase')) {
+    log.warn(httpStatus(400), 'Invalid post parameters. Phrase not created.');
+    return Promise.resolve(response.error(400, {}, new Error(`Invalid post parameters. Phrase not created.`)));
+  }
+  const {id, lang, phrase} = event;
 
   // Create the DynamoDBClient if it does not already exist.
   // If running locally dynamodb listening on local port 8000
@@ -42,9 +50,9 @@ export default async (event: any, context: any) => {
   const params: PutItemCommandInput = {
     TableName: tableName,
     Item: {
-      id: { S: "good-night" },
-      lang: { S: "en" },
-      phrase: {S: "Good Night"}
+      id: { S: id },
+      lang: { S: lang },
+      phrase: {S: phrase}
     }
   };
 
