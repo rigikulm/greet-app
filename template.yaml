@@ -65,6 +65,21 @@ Resources:
           Properties:
             Path: /hello/{lang}
             Method: get
+  GetPhraseFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: !Sub "${ServiceName}-${StageName}-get-phrase"
+      Description: 'Returns the requested phrase'
+      CodeUri: src/functions/phrase
+      Handler: handler.default
+      Policies:
+        - AmazonDynamoDBFullAccess
+      Events:
+        Phrase:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /phrase/{phraseId}
+            Method: get
   GoodbyeFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
