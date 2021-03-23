@@ -50,7 +50,15 @@ Service
 Owner
 STAGE
 
-### CLI Commands
+## Lambda Functions
+| Function Name | Description                                        |                   Query Params |
+|:--------------|:---------------------------------------------------|-------------------------------:|
+| Foo           | It does something                                  |                    /foo/bar?hi |
+| create-phrase | Creates new phrase for a given lang                |                             NA |
+| phrase        | Returns the phrase for the given lang              | /phrase/{phraseId}?lang=<lang> |
+| get-phrases   | Returns all language bingings for a given phraseId |                                |
+
+## CLI Commands
 - `npm run build` - builds the package via webpack. Use this instead of 'sam build'.
 - `npm run test` - runs jest and provides a coverage report
 - `sam deploy --guided` - deploys the project and queries for project settings

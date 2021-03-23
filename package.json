@@ -52,6 +52,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.8.0",
     "@aws-sdk/types": "^3.3.0",
+    "@aws-sdk/util-dynamodb": "^3.9.0",
     "@greenhorn/faas-logger": "file:../faas-logger/dist"
   }
 }
